@@ -2,29 +2,30 @@ package com.oocl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class App {
     public static final String ERROR_MSG = "ERROR: Wrong Input, Input again";
     public static final int INPUT_LENGTH_LIMIT = 4;
-    private String answer;
-    private List<String> guessNumbers = new ArrayList<String>();
+    public static final int GAME_CHANGES_LIMIT = 6;
 
-    public String getAnswer() {
-        return answer;
+    private String answer;
+    private int gameChanges = GAME_CHANGES_LIMIT;
+
+    public static int getInputLengthLimit() {
+        return INPUT_LENGTH_LIMIT;
+    }
+
+    public int getGameChanges() {
+        return gameChanges;
+    }
+
+    public void minusGameChanges() {
+        gameChanges--;
     }
 
     public void setAnswer(String answer) {
         this.answer = answer;
-    }
-
-    public List<String> getInputs() {
-        guessNumbers = new ArrayList<String>();
-        guessNumbers = this.guessNumbers;
-        return guessNumbers;
-    }
-
-    public void addGuessNumbers(String guessNumber) {
-        this.guessNumbers.add(guessNumber);
     }
 
     public String check(String input) {
@@ -77,5 +78,36 @@ public class App {
             isAnswerGenerated = true;
         }
         return isAnswerGenerated;
+    }
+
+    public static void main(String arg[]) {
+        App game = new App();
+        game.generateAnswer();
+        String inputString = "";
+        String inputCheckResult = "";
+        Scanner userInput = new Scanner(System.in);
+
+        System.out.println(String.format("Welcome to Guess Number!\nThe answer is a %d digit number without duplicate digit.", game.getInputLengthLimit()));
+        System.out.println(String.format("You have %d chances to guess.\nPlease input a %d digit number.", game.getGameChanges(), game.getInputLengthLimit()));
+         do {
+            inputCheckResult = "";
+            while (!inputCheckResult.equals("PASS")) {
+                inputString = userInput.nextLine();
+                inputCheckResult = game.verifyInput(inputString);
+                if (!inputCheckResult.equals("PASS")) {
+                    System.out.println(inputCheckResult);
+                }
+            }
+
+            if ((!game.check(inputString).equals(String.format("%dA0B", game.getInputLengthLimit()))) && (game.getGameChanges() > 0)) {
+                System.out.println(String.format("%s\nYou have %d chances to guess.\nPlease input a %d digit number.",game.check(inputString) , game.getGameChanges(), game.getInputLengthLimit()));
+            } else if (game.check(inputString).equals(String.format("%dA0B", game.getInputLengthLimit()))) {
+                System.out.println("You Win!");
+                break;
+            } else {
+                System.out.println("You Lose");
+            }
+            game.minusGameChanges();
+        }while (game.getGameChanges() >= 0);
     }
 }

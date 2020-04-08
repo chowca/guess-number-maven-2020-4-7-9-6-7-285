@@ -17,7 +17,6 @@ public class AppTest {
         String input = "1234";
         //when
         game.setAnswer(answer);
-        game.addGuessNumbers(input);
         //then
         assertThat(game.check(input), is("4A0B"));
     }
@@ -30,7 +29,6 @@ public class AppTest {
         String input = "0987";
         //when
         game.setAnswer(answer);
-        game.addGuessNumbers(input);
         assertThat(game.check(input), is("0A0B"));
     }
 
@@ -42,7 +40,6 @@ public class AppTest {
         String input = "1289";
         //when
         game.setAnswer(answer);
-        game.addGuessNumbers(input);
         //then
         assertThat(game.check(input), is("2A0B"));
     }
@@ -55,7 +52,6 @@ public class AppTest {
         String input = "4321";
         //when
         game.setAnswer(answer);
-        game.addGuessNumbers(input);
         //then
         assertThat(game.check(input), is("0A4B"));
     }
@@ -68,7 +64,6 @@ public class AppTest {
         String input = "1243";
         //when
         game.setAnswer(answer);
-        game.addGuessNumbers(input);
         //then
         assertThat(game.check(input), is("2A2B"));
     }
