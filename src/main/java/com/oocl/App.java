@@ -89,7 +89,7 @@ public class App {
 
         System.out.println(String.format("Welcome to Guess Number!\nThe answer is a %d digit number without duplicate digit.", game.getInputLengthLimit()));
         System.out.println(String.format("You have %d chances to guess.\nPlease input a %d digit number.", game.getGameChanges(), game.getInputLengthLimit()));
-         do {
+        do {
             inputCheckResult = "";
             while (!inputCheckResult.equals("PASS")) {
                 inputString = userInput.nextLine();
@@ -100,7 +100,7 @@ public class App {
             }
 
             if ((!game.check(inputString).equals(String.format("%dA0B", game.getInputLengthLimit()))) && (game.getGameChanges() > 0)) {
-                System.out.println(String.format("%s\nYou have %d chances to guess.\nPlease input a %d digit number.",game.check(inputString) , game.getGameChanges(), game.getInputLengthLimit()));
+                System.out.println(String.format("%s\nYou have %d chances to guess.\nPlease input a %d digit number.", game.check(inputString), game.getGameChanges(), game.getInputLengthLimit()));
             } else if (game.check(inputString).equals(String.format("%dA0B", game.getInputLengthLimit()))) {
                 System.out.println("You Win!");
                 break;
@@ -108,6 +108,6 @@ public class App {
                 System.out.println("You Lose");
             }
             game.minusGameChanges();
-        }while (game.getGameChanges() >= 0);
+        } while (game.getGameChanges() >= 0);
     }
 }

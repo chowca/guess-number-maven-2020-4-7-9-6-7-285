@@ -69,7 +69,7 @@ public class AppTest {
     }
 
     @Test
-    public void should_verify_input_integrity(){
+    public void should_verify_input_integrity() {
         //given
         App game = new App();
         String inputNormal = "1234";
@@ -87,7 +87,7 @@ public class AppTest {
     }
 
     @Test
-    public void should_return_random_answer(){
+    public void should_return_random_answer() {
         //given
         App game = new App();
         //when
