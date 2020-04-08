@@ -61,4 +61,18 @@ public class AppTest {
         //then
         assertThat(game.check(input), is("0A4B"));
     }
+
+    @Test
+    public void should_return_for_partial_correct_number_and_position() {
+        //given
+        App game = new App();
+        String answer = "1234";
+        String input = "1243";
+        String result = "";
+        //when
+        game.setAnswer(answer);
+        game.addGuessNumbers(input);
+        //then
+        assertThat(game.check(input), is("2A2B"));
+    }
 }
