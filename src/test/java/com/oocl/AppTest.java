@@ -18,6 +18,7 @@ public class AppTest {
         //when
         game.setAnswer(answer);
         game.addGuessNumbers(input);
+        //then
         assertThat(game.check(input), is("4A0B"));
     }
     @Test
@@ -43,6 +44,21 @@ public class AppTest {
         //when
         game.setAnswer(answer);
         game.addGuessNumbers(input);
+        //then
         assertThat(game.check(input), is("2A0B"));
+    }
+
+    @Test
+    public void should_return_for_correct_number_not_position() {
+        //given
+        App game = new App();
+        String answer = "1234";
+        String input = "4321";
+        String result = "";
+        //when
+        game.setAnswer(answer);
+        game.addGuessNumbers(input);
+        //then
+        assertThat(game.check(input), is("0A4B"));
     }
 }

@@ -34,6 +34,9 @@ public class App
             if(answer.indexOf(input.charAt(inputIndex)) == inputIndex) {
                 a++;
             }
+            else if(answer.indexOf(input.charAt(inputIndex)) != -1) {
+                b++;
+            }
         }
         return result += String.format("%dA%dB",a,b);
     }
