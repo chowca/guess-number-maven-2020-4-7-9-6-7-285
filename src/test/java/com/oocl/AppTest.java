@@ -32,4 +32,17 @@ public class AppTest {
         game.addGuessNumbers(input);
         assertThat(game.check(input), is("0A0B"));
     }
+
+    @Test
+    public void should_return_for_correct_number_and_position() {
+        //given
+        App game = new App();
+        String answer = "1234";
+        String input = "1289";
+        String result = "";
+        //when
+        game.setAnswer(answer);
+        game.addGuessNumbers(input);
+        assertThat(game.check(input), is("2A0B"));
+    }
 }
