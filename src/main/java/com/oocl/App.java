@@ -47,12 +47,35 @@ public class App {
             eorrorMsg = ERROR_MSG;
         } else {
             for (int inputIndex = 0; inputIndex < input.length(); inputIndex++) {
-                if((input.lastIndexOf(input.charAt(inputIndex)) != inputIndex) || (!Character.isDigit(input.charAt(inputIndex)))){
+                if ((input.lastIndexOf(input.charAt(inputIndex)) != inputIndex) || (!Character.isDigit(input.charAt(inputIndex)))) {
                     eorrorMsg = ERROR_MSG;
                     break;
                 }
             }
         }
         return eorrorMsg;
+    }
+
+    public boolean generateAnswer() {
+        boolean isAnswerGenerated = false;
+        String generatedAnswer = "";
+        List<Integer> answerList = new ArrayList<Integer>();
+        for (int answerListIndex = 0; answerListIndex < INPUT_LENGTH_LIMIT; answerListIndex++) {
+            int random = (int) (Math.random() * 10);
+            if (answerListIndex == 0) {
+                answerList.add(random);
+            } else {
+                while (answerList.contains(random)) {
+                    random = (int) (Math.random() * 10);
+                }
+                answerList.add(random);
+            }
+        }
+        generatedAnswer = answerList.toString().replaceAll("[\\[, \\]]", "");
+        if (generatedAnswer.length() == INPUT_LENGTH_LIMIT) {
+            setAnswer(generatedAnswer);
+            isAnswerGenerated = true;
+        }
+        return isAnswerGenerated;
     }
 }

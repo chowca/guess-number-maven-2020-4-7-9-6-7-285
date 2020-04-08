@@ -6,6 +6,7 @@ import java.io.IOException;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertEquals;
 
 public class AppTest {
     @Test
@@ -73,7 +74,7 @@ public class AppTest {
     }
 
     @Test
-    public void should_verify_input_integrity() {
+    public void should_verify_input_integrity(){
         //given
         App game = new App();
         String inputNormal = "1234";
@@ -88,5 +89,14 @@ public class AppTest {
         assertThat(game.verifyInput(inputExtraDigit), is("ERROR: Wrong Input, Input again"));
         assertThat(game.verifyInput(inputDuplicateDigit), is("ERROR: Wrong Input, Input again"));
         assertThat(game.verifyInput(inputNotdigit), is("ERROR: Wrong Input, Input again"));
+    }
+
+    @Test
+    public void should_return_random_answer(){
+        //given
+        App game = new App();
+        //when
+        //then
+        assertEquals(true, game.generateAnswer());
     }
 }
