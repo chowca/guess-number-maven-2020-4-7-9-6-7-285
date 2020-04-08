@@ -20,5 +20,16 @@ public class AppTest {
         game.addGuessNumbers(input);
         assertThat(game.check(input), is("4A0B"));
     }
-
+    @Test
+    public void should_return_for_totally_wrong_answer() {
+        //given
+        App game = new App();
+        String answer = "1234";
+        String input = "0987";
+        String result = "";
+        //when
+        game.setAnswer(answer);
+        game.addGuessNumbers(input);
+        assertThat(game.check(input), is("0A0B"));
+    }
 }
