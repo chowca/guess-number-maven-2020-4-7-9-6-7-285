@@ -14,9 +14,8 @@ public class GuessNumberTest {
     @Before
     public void setUp() throws Exception {
         // before method
-        game = new GuessNumber();
         String answer = "1234";
-        game.setAnswer(answer);
+        game = new GuessNumber(answer);
     }
 
     @Test
@@ -61,13 +60,5 @@ public class GuessNumberTest {
         //when
         //then
         assertThat(game.check(input), is("2A2B"));
-    }
-
-    @Test
-    public void should_return_random_answer() {
-        //given
-        //when
-        //then
-        assertEquals(true, game.generateAnswer());
     }
 }
