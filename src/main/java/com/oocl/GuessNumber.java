@@ -47,21 +47,6 @@ public class GuessNumber {
         return result += String.format(ANSWER_PATTERN, a, b);
     }
 
-    public String verifyInput(String input) {
-        String eorrorMsg = "PASS";
-        if (input.length() != INPUT_LENGTH_LIMIT) {
-            eorrorMsg = ERROR_MSG;
-        } else {
-            for (int inputIndex = 0; inputIndex < input.length(); inputIndex++) {
-                if ((input.lastIndexOf(input.charAt(inputIndex)) != inputIndex) || (!Character.isDigit(input.charAt(inputIndex)))) {
-                    eorrorMsg = ERROR_MSG;
-                    break;
-                }
-            }
-        }
-        return eorrorMsg;
-    }
-
     public boolean generateAnswer() {
         boolean isAnswerGenerated = false;
         String generatedAnswer = "";

@@ -1,23 +1,22 @@
 package com.oocl;
 
-import java.util.Scanner;
-
 public class App {
 
     public static void main(String arg[]) {
         GuessNumber game = new GuessNumber();
+        ConsoleInputReader inputReader = new ConsoleInputReader();
         game.generateAnswer();
         String inputString = "";
         String inputCheckResult = "";
-        Scanner userInput = new Scanner(System.in);
 
         System.out.println(String.format("Welcome to Guess Number!\nThe answer is a %d digit number without duplicate digit.", game.getInputLengthLimit()));
         System.out.println(String.format("You have %d chances to guess.\nPlease input a %d digit number.", game.getGameChanges(), game.getInputLengthLimit()));
         do {
+            game.minusGameChanges();
             inputCheckResult = "";
             while (!inputCheckResult.equals("PASS")) {
-                inputString = userInput.nextLine();
-                inputCheckResult = game.verifyInput(inputString);
+                inputString = inputReader.getInput();
+                inputCheckResult = inputReader.verifyInput(inputString);
                 if (!inputCheckResult.equals("PASS")) {
                     System.out.println(inputCheckResult);
                 }
@@ -31,7 +30,6 @@ public class App {
             } else {
                 System.out.println(String.format("You Lose! Anser: %s", game.getAnswer()));
             }
-            game.minusGameChanges();
         } while (game.getGameChanges() >= 0);
     }
 }
