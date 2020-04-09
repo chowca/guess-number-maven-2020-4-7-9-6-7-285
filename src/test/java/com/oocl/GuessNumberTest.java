@@ -1,22 +1,29 @@
 package com.oocl;
 
+import org.junit.Before;
 import org.junit.Test;
-
-import java.io.IOException;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertEquals;
 
-public class AppTest {
+public class GuessNumberTest {
+
+    private GuessNumber game;
+
+    @Before
+    public void setUp() throws Exception {
+        // before method
+        game = new GuessNumber();
+        String answer = "1234";
+        game.setAnswer(answer);
+    }
+
     @Test
     public void should_return_for_exact_answer() {
         //given
-        App game = new App();
-        String answer = "1234";
         String input = "1234";
         //when
-        game.setAnswer(answer);
         //then
         assertThat(game.check(input), is("4A0B"));
     }
@@ -24,22 +31,16 @@ public class AppTest {
     @Test
     public void should_return_for_totally_wrong_answer() {
         //given
-        App game = new App();
-        String answer = "1234";
         String input = "0987";
         //when
-        game.setAnswer(answer);
         assertThat(game.check(input), is("0A0B"));
     }
 
     @Test
     public void should_return_for_correct_number_and_position() {
         //given
-        App game = new App();
-        String answer = "1234";
         String input = "1289";
         //when
-        game.setAnswer(answer);
         //then
         assertThat(game.check(input), is("2A0B"));
     }
@@ -47,11 +48,8 @@ public class AppTest {
     @Test
     public void should_return_for_correct_number_not_position() {
         //given
-        App game = new App();
-        String answer = "1234";
         String input = "4321";
         //when
-        game.setAnswer(answer);
         //then
         assertThat(game.check(input), is("0A4B"));
     }
@@ -59,11 +57,8 @@ public class AppTest {
     @Test
     public void should_return_for_partial_correct_number_and_position() {
         //given
-        App game = new App();
-        String answer = "1234";
         String input = "1243";
         //when
-        game.setAnswer(answer);
         //then
         assertThat(game.check(input), is("2A2B"));
     }
@@ -71,7 +66,6 @@ public class AppTest {
     @Test
     public void should_verify_input_integrity() {
         //given
-        App game = new App();
         String inputNormal = "1234";
         String inputLessDigit = "12";
         String inputExtraDigit = "12345";
@@ -89,7 +83,6 @@ public class AppTest {
     @Test
     public void should_return_random_answer() {
         //given
-        App game = new App();
         //when
         //then
         assertEquals(true, game.generateAnswer());
