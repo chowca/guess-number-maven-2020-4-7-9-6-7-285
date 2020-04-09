@@ -2,10 +2,10 @@ package com.oocl;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertEquals;
 
 public class GuessNumberTest {
 
@@ -15,6 +15,8 @@ public class GuessNumberTest {
     public void setUp() throws Exception {
         // before method
         String answer = "1234";
+        AnswerGenerator answerGenerator = Mockito.mock(AnswerGenerator.class);
+        Mockito.when(answerGenerator.generate()).thenReturn(answer);
         game = new GuessNumber(answer);
     }
 
