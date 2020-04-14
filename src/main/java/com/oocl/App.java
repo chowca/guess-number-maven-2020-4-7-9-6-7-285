@@ -4,6 +4,8 @@ import com.constant.*;
 
 public class App {
 
+    public static final int GAME_OVER = 0;
+
     public static void main(String arg[]) {
         ConsoleInputReader inputReader = new ConsoleInputReader();
         RandomAnswerGenerator answerGenerator = new RandomAnswerGenerator();
@@ -32,6 +34,6 @@ public class App {
             } else {
                 System.out.println(String.format(GameMsg.LOSE_MSG, game.getAnswer()));
             }
-        } while (game.getGameChanges() > 0);
+        } while (game.getGameChanges() > GAME_OVER);
     }
 }
