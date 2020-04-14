@@ -15,10 +15,10 @@ public class App {
         System.out.println(String.format(GameMsg.CHANCES_AND_INPUT_MSG, game.getGameChanges(), Config.INPUT_LENGTH_LIMIT));
         do {
             inputCheckResult = "";
-            while (!inputCheckResult.equals("PASS")) {
+            while (!inputCheckResult.equals(ErrorMsg.PASS_MSG)) {
                 inputString = inputReader.getInput();
                 inputCheckResult = inputReader.verifyInput(inputString);
-                if (!inputCheckResult.equals("PASS")) {
+                if (!inputCheckResult.equals(ErrorMsg.PASS_MSG)) {
                     System.out.println(inputCheckResult);
                 }
             }

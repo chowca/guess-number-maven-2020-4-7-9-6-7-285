@@ -4,6 +4,7 @@ import com.constant.Config;
 
 public class GuessNumber {
 
+    public static final int CHAR_NOT_FOUND = -1;
     private String answer;
     private int gameChanges = Config.GAME_CHANGES_LIMIT;
 
@@ -24,17 +25,16 @@ public class GuessNumber {
     }
 
     public String check(String input) {
-        String result = "";
         int a = 0;
         int b = 0;
         for (int inputIndex = 0; inputIndex < input.length(); inputIndex++) {
             if (answer.indexOf(input.charAt(inputIndex)) == inputIndex) {
                 a++;
-            } else if (answer.indexOf(input.charAt(inputIndex)) != -1) {
+            } else if (answer.indexOf(input.charAt(inputIndex)) != CHAR_NOT_FOUND) {
                 b++;
             }
         }
-        return result + String.format(Config.ANSWER_PATTERN, a, b);
+        return String.format(Config.ANSWER_PATTERN, a, b);
     }
 
 }

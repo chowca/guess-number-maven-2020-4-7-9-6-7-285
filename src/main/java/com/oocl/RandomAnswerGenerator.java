@@ -6,12 +6,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RandomAnswerGenerator implements AnswerGenerator {
+
+    public static final int DIGIT_BOUND = 10;
+
     public String generate() {
         List<Integer> answerList = new ArrayList<Integer>();
-        int random = (int) (Math.random() * 10);
+        int random = (int) (Math.random() * DIGIT_BOUND);
         for (int answerListIndex = 0; answerListIndex < Config.INPUT_LENGTH_LIMIT; answerListIndex++) {
             while (answerList.contains(random)) {
-                random = (int) (Math.random() * 10);
+                random = (int) (Math.random() * DIGIT_BOUND);
             }
             answerList.add(random);
         }
