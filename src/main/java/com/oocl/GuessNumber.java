@@ -1,20 +1,18 @@
 package com.oocl;
 
+import com.constant.Config;
+
 public class GuessNumber {
-    public static final String ERROR_MSG = "ERROR: Wrong Input, Input again";
-    public static final int INPUT_LENGTH_LIMIT = 4;
-    public static final int GAME_CHANGES_LIMIT = 6;
-    public static final String ANSWER_PATTERN = "%dA%dB";
 
     private String answer;
-    private int gameChanges = GAME_CHANGES_LIMIT;
+    private int gameChanges = Config.GAME_CHANGES_LIMIT;
 
     public GuessNumber(String answer) {
         this.answer = answer;
     }
 
     public static int getInputLengthLimit() {
-        return INPUT_LENGTH_LIMIT;
+        return Config.INPUT_LENGTH_LIMIT;
     }
 
     public int getGameChanges() {
@@ -40,7 +38,7 @@ public class GuessNumber {
                 b++;
             }
         }
-        return result + String.format(ANSWER_PATTERN, a, b);
+        return result + String.format(Config.ANSWER_PATTERN, a, b);
     }
 
 }
