@@ -11,10 +11,6 @@ public class GuessNumber {
         this.answer = answer;
     }
 
-    public static int getInputLengthLimit() {
-        return Config.INPUT_LENGTH_LIMIT;
-    }
-
     public int getGameChanges() {
         return gameChanges;
     }
