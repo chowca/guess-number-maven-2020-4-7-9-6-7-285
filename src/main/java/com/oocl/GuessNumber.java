@@ -6,18 +6,18 @@ public class GuessNumber {
 
     public static final int CHAR_NOT_FOUND = -1;
     private String answer;
-    private int gameChanges = Config.GAME_CHANGES_LIMIT;
+    private int gameChances = Config.GAME_CHANCES_LIMIT;
 
     public GuessNumber(String answer) {
         this.answer = answer;
     }
 
-    public int getGameChanges() {
-        return gameChanges;
+    public int getGameChances() {
+        return gameChances;
     }
 
-    public void minusGameChanges() {
-        gameChanges--;
+    public void minusGameChances() {
+        gameChances--;
     }
 
     public String getAnswer() {
@@ -25,16 +25,16 @@ public class GuessNumber {
     }
 
     public String check(String input) {
-        int a = 0;
-        int b = 0;
+        int numOfCorrectDigitCorrectPosition = 0;
+        int numOfCorrectDigitWrongPosition = 0;
         for (int inputIndex = 0; inputIndex < input.length(); inputIndex++) {
             if (answer.indexOf(input.charAt(inputIndex)) == inputIndex) {
-                a++;
+                numOfCorrectDigitCorrectPosition++;
             } else if (answer.indexOf(input.charAt(inputIndex)) != CHAR_NOT_FOUND) {
-                b++;
+                numOfCorrectDigitWrongPosition++;
             }
         }
-        return String.format(Config.ANSWER_PATTERN, a, b);
+        return String.format(Config.ANSWER_PATTERN, numOfCorrectDigitCorrectPosition, numOfCorrectDigitWrongPosition);
     }
 
 }

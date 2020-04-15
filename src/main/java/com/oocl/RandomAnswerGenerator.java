@@ -8,6 +8,7 @@ import java.util.List;
 public class RandomAnswerGenerator implements AnswerGenerator {
 
     public static final int DIGIT_BOUND = 10;
+    public static final String REGEX_RATTERN = "[\\[, \\]]";
 
     public String generate() {
         List<Integer> answerList = new ArrayList<Integer>();
@@ -18,6 +19,6 @@ public class RandomAnswerGenerator implements AnswerGenerator {
             }
             answerList.add(random);
         }
-        return answerList.toString().replaceAll("[\\[, \\]]", "");
+        return answerList.toString().replaceAll(REGEX_RATTERN, "");
     }
 }
